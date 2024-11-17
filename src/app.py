@@ -1,9 +1,11 @@
 import tkinter as tk
 import os
 import webbrowser
+import platform
 from tkinter import ttk, filedialog, messagebox
 from image_viewer import ImageViewer
 from file_manager import FileManager
+
 
 class LinuxImageViewer:
     def __init__(self, root):
@@ -81,8 +83,8 @@ class LinuxImageViewer:
         self.info_label = ttk.Label(self.control_frame, text="No image selected")
         self.info_label.pack(side=tk.RIGHT, padx=5, pady=5)
 
-        self.documentation_button = ttk.Button(self.viewer_frame, text="View Wiki", command=self.view_documentation)
-        self.documentation_button.pack(side=tk.BOTTOM, pady=10, padx=10, fill=tk.X)
+        self.about_button = ttk.Button(self.viewer_frame, text="About", command=self.about_app)
+        self.about_button.pack(side=tk.BOTTOM, pady=10, padx=10, fill=tk.X)
 
     def update_info(self, image_path):
         """Updates the information displayed in the 'info_label' tag."""
@@ -102,7 +104,7 @@ class LinuxImageViewer:
         if item_values:
             image_path = item_values[0]
             self.image_viewer.load_image(image_path)
-            self.update_info(image_path)  # We call update_info to update the label
+            self.update_info(image_path)
 
     def zoom_in(self):
         self.image_viewer.zoom_in()
@@ -121,6 +123,103 @@ class LinuxImageViewer:
             webbrowser.open(f'file://{html_path}')
         else:
             messagebox.showerror("Error", "Wiki file not found.")
+
+    def about_app(self):
+        """Display information about the app in a new window."""
+        import platform
+        import tkinter as tk
+        from tkinter import ttk
+
+        # Create a new top-level window
+        about_window = tk.Toplevel(self.root)
+        about_window.title("About KittyPhotos")
+        about_window.geometry("400x300")
+        about_window.configure(bg="#2e3440")
+        about_window.resizable(False, False)  # Disable resizing
+
+        # Optional: Set an icon for the window
+        # about_window.iconbitmap("path_to_icon.ico")
+
+        # Title Label
+        title_label = ttk.Label(
+            about_window,
+            text="KittyPhotos - Linux2Win",
+            font=("Arial", 16, "bold"),
+            background="#2e3440",
+            foreground="#eceff4"
+        )
+        title_label.pack(pady=(20, 10))  # Add padding at the top
+
+        # Version Information
+        version_label = ttk.Label(
+            about_window,
+            text="Version: 1.0.0",
+            background="#2e3440",
+            foreground="#eceff4"
+        )
+        version_label.pack(pady=5)
+
+        # License Information
+        license_label = ttk.Label(
+            about_window,
+            text="License: MIT",
+            background="#2e3440",
+            foreground="#eceff4"
+        )
+        license_label.pack(pady=5)
+
+        # Developer Information
+        developers_label = ttk.Label(
+            about_window,
+            text="Developed by: KittyLinux2Win",
+            background="#2e3440",
+            foreground="#eceff4"
+        )
+        developers_label.pack(pady=5)
+
+        # OS Information
+        os_name = platform.system()
+        os_version = platform.version()
+        os_info = f"OS: {os_name} (Version: {os_version})"
+        os_label = ttk.Label(
+            about_window,
+            text=os_info,
+            background="#2e3440",
+            foreground="#eceff4"
+        )
+        os_label.pack(pady=5)
+
+        # Buttons Frame for better layout
+        buttons_frame = ttk.Frame(about_window, style="TFrame")
+        buttons_frame.pack(pady=20)
+
+        # Wiki Button
+        wiki_button = ttk.Button(
+            buttons_frame,
+            text="View Wiki",
+            command=self.view_documentation
+        )
+        wiki_button.grid(row=0, column=0, padx=10)
+
+        # Close Button
+        close_button = ttk.Button(
+            buttons_frame,
+            text="Close",
+            command=about_window.destroy
+        )
+        close_button.grid(row=0, column=1, padx=10)
+
+        # Center the window on the screen
+        about_window.update_idletasks()
+        window_width = about_window.winfo_width()
+        window_height = about_window.winfo_height()
+        screen_width = about_window.winfo_screenwidth()
+        screen_height = about_window.winfo_screenheight()
+        x = (screen_width // 2) - (window_width // 2)
+        y = (screen_height // 2) - (window_height // 2)
+        about_window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
+
 
 if __name__ == "__main__":
     root = tk.Tk()
