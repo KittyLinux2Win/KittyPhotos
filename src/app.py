@@ -2,6 +2,7 @@ import tkinter as tk
 import os
 import webbrowser
 import platform
+import subprocess
 from tkinter import ttk, filedialog, messagebox
 from image_viewer import ImageViewer
 from file_manager import FileManager
@@ -54,6 +55,9 @@ class LinuxImageViewer:
         self.folder_button = ttk.Button(self.sidebar, text="Select Folder", command=self.select_folder)
         self.folder_button.pack(pady=10, padx=10, fill=tk.X)
 
+        self.open_editor_button = ttk.Button(self.sidebar, text="Open ImageEditor", command=self.open_image_editor)
+        self.open_editor_button.pack(pady=10, padx=10, fill=tk.X)
+
         self.file_tree = ttk.Treeview(self.sidebar, selectmode="browse", show="tree")
         self.file_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self.file_tree_scroll = ttk.Scrollbar(self.sidebar, orient="vertical", command=self.file_tree.yview)
@@ -85,6 +89,12 @@ class LinuxImageViewer:
 
         self.about_button = ttk.Button(self.viewer_frame, text="About", command=self.about_app)
         self.about_button.pack(side=tk.BOTTOM, pady=10, padx=10, fill=tk.X)
+
+    def open_image_editor(self):
+        try:
+            subprocess.Popen(["python","src/ImageEditor.py"])
+        except FileNotFoundError:
+            print("Error: The file ImageEditor.py could not be found.")
 
     def update_info(self, image_path):
         """Updates the information displayed in the 'info_label' tag."""
