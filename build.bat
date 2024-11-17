@@ -5,50 +5,89 @@ echo          Auto-Py-to-Exe CLI Tool
 echo ====================================================
 echo.
 
-:: Check if auto-py-to-exe is installed
+:: Main menu
+:Menu
+cls
+echo ====================================================
+echo               Auto-Py-to-Exe CLI Tool
+echo ====================================================
+echo.
+echo 1. Install or Update auto-py-to-exe
+echo 2. Uninstall auto-py-to-exe
+echo 3. Run auto-py-to-exe
+echo 4. Exit
+echo.
+set /p "option=Select an option: "
+if "%option%"=="1" goto :InstallAutoPyToExe
+if "%option%"=="2" goto :UninstallAutoPyToExe
+if "%option%"=="3" goto :RunAutoPyToExe
+if "%option%"=="4" exit /b
+goto :Menu
+
+:: Function to install/update auto-py-to-exe
+:InstallAutoPyToExe
+cls
+echo ====================================================
+echo          Installing/Updating auto-py-to-exe
+echo ====================================================
+echo.
 echo Checking if auto-py-to-exe is installed...
 pip show auto-py-to-exe >nul 2>nul
 if %errorlevel% neq 0 (
-    echo auto-py-to-exe is not installed.
-    echo Installing auto-py-to-exe...
-    call :InstallAutoPyToExe
+    echo auto-py-to-exe is not installed. Proceeding with installation...
 ) else (
-    echo auto-py-to-exe is already installed.
-    echo Running auto-py-to-exe...
-    call :RunAutoPyToExe
+    echo auto-py-to-exe is already installed. Proceeding with update...
 )
-goto :EOF
-
-:InstallAutoPyToExe
-:: Install auto-py-to-exe with a progress bar
-echo.
-echo Installing auto-py-to-exe...
-echo.
-
-setlocal enabledelayedexpansion
-set /a "progress=0"
-set "barLength=50"
-
-:: Start the installation and simulate progress
-for /f "delims=" %%i in ('pip install auto-py-to-exe --disable-pip-version-check --quiet') do (
-    set /a progress+=1
-    set /a completed=!progress! * 100 / 5
-    set /a barCompleted=!completed!*%barLength%/100
-    set "bar="
-    for /L %%a in (1,1,!barCompleted!) do set "bar=!bar!#"
-    for /L %%a in (!barCompleted!,1,%barLength%) do set "bar=!bar!."
-    echo [!bar!] !completed!%% Completed
-    timeout /t 1 >nul
+pip install auto-py-to-exe --upgrade --quiet
+if %errorlevel% neq 0 (
+    echo Error during installation/update of auto-py-to-exe.
+    pause
+    goto :Menu
 )
+echo auto-py-to-exe was successfully installed/updated.
+pause
+goto :Menu
 
-echo.
-echo Installation complete!
-goto :RunAutoPyToExe
-
-:RunAutoPyToExe
-:: Run auto-py-to-exe after installation
-echo.
-echo Launching auto-py-to-exe...
+:: Function to uninstall auto-py-to-exe
+:UninstallAutoPyToExe
+cls
 echo ====================================================
+echo          Uninstalling auto-py-to-exe
+echo ====================================================
+echo.
+pip show auto-py-to-exe >nul 2>nul
+if %errorlevel% neq 0 (
+    echo auto-py-to-exe is not installed. Nothing to uninstall.
+    pause
+    goto :Menu
+)
+
+echo Are you sure you want to uninstall auto-py-to-exe? (y/n)
+set /p "confirm=Your choice: "
+if /i "%confirm%"=="y" (
+    pip uninstall auto-py-to-exe -y --quiet
+    if %errorlevel% neq 0 (
+        echo Error during uninstallation of auto-py-to-exe.
+        pause
+        goto :Menu
+    )
+    echo auto-py-to-exe was successfully uninstalled.
+) else (
+    echo Uninstallation canceled.
+)
+pause
+goto :Menu
+
+:: Function to run auto-py-to-exe
+:RunAutoPyToExe
+cls
+echo ====================================================
+echo          Running auto-py-to-exe
+echo ====================================================
+echo.
 auto-py-to-exe
-goto :EOF
+if %errorlevel% neq 0 (
+    echo Error running auto-py-to-exe. Ensure it is properly installed.
+    pause
+)
+goto :Menu
