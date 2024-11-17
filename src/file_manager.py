@@ -18,7 +18,7 @@ class FileManager:
                 if os.path.isdir(full_path):
                     folder = self.app.file_tree.insert(parent, 'end', text=item, open=False)
                     self.add_directory_to_tree(folder, full_path)  # Recursión para subdirectorios
-                elif item.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
+                elif item.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tiff', '.webp', '.svg', '.ico', '.heic', '.heif')):
                     self.app.file_tree.insert(parent, 'end', text=item, values=(full_path,))
         except PermissionError:
             pass  # If we do not have permission to read a folder, we ignore it.
@@ -28,7 +28,7 @@ class FileManager:
         # Iterate over the files in the folder, but only image files
         for root_dir, _, files in os.walk(folder_path):
             for file in files:
-                if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
+                if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tiff', '.webp', '.svg', '.ico', '.heic', '.heif')):
                     self.app.images.append(os.path.join(root_dir, file))
         self.app.images.sort()
         self.app.current_image_index = 0
@@ -36,3 +36,4 @@ class FileManager:
             self.app.image_viewer.load_image(self.app.images[0])
         else:
             tk.messagebox.showinfo("Information", "No images were found in the selected folder.")
+
