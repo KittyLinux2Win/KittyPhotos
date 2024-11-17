@@ -1,5 +1,6 @@
 import tkinter as tk
 import os
+import webbrowser
 from tkinter import ttk, filedialog, messagebox
 from image_viewer import ImageViewer
 from file_manager import FileManager
@@ -80,6 +81,9 @@ class LinuxImageViewer:
         self.info_label = ttk.Label(self.control_frame, text="No image selected")
         self.info_label.pack(side=tk.RIGHT, padx=5, pady=5)
 
+        self.documentation_button = ttk.Button(self.viewer_frame, text="View Wiki", command=self.view_documentation)
+        self.documentation_button.pack(side=tk.BOTTOM, pady=10, padx=10, fill=tk.X)
+
     def update_info(self, image_path):
         """Updates the information displayed in the 'info_label' tag."""
         image_name = os.path.basename(image_path)
@@ -108,6 +112,15 @@ class LinuxImageViewer:
 
     def rotate_image(self):
         self.image_viewer.rotate_image()
+
+    def view_documentation(self):
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        html_path = os.path.join(base_path, 'html', 'wiki.html')
+
+        if os.path.exists(html_path):
+            webbrowser.open(f'file://{html_path}')
+        else:
+            messagebox.showerror("Error", "Wiki file not found.")
 
 if __name__ == "__main__":
     root = tk.Tk()
