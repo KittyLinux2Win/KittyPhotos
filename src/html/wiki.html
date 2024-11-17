@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KittyPhotos - Wiki</title>
+    <link rel="shortcut icon" href="https://github.com/KittyLinux2Win/KittyPhotos/blob/main/icon/kitty.app.png?raw=true" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#61dafb',
+                            dark: '#149eca'
+                        },
+                        background: {
+                            light: '#ffffff',
+                            dark: '#23272f'
+                        },
+                        text: {
+                            light: '#000000',
+                            dark: '#ffffff'
+                        },
+                        sidebar: {
+                            light: '#f7f7f7',
+                            dark: '#1a1a1a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos adicionales para el switch de tema */
+        .theme-switch {
+            position: relative;
+            width: 60px;
+            height: 34px;
+        }
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-sans transition-colors duration-300">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-full md:w-64 bg-sidebar-light dark:bg-sidebar-dark p-6 md:overflow-y-auto">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-2xl font-bold text-primary-light dark:text-primary-dark">KittyPhotos</h1>
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <nav>
+                <ul class="space-y-2">
+                    <li><a href="#Introduction" class="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Introduction</a></li>
+                    <li><a href="#install" class="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Install</a></li>
+                    <li><a href="#Basic-usage" class="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Basic Usage</a></li>
+                    <li><a href="#Features" class="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Features</a></li>
+                    <li><a href="#faq" class="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">FAQ</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main content -->
+        <main class="flex-1 p-6 md:p-12 overflow-y-auto">
+            <section id="Introduction" class="mb-12">
+                <h2 class="text-3xl font-bold text-primary-light dark:text-primary-dark mb-4">Introduction to KittyPhotos</h2>
+                <p class="mb-4">KittyPhotos is an application originally designed for Linux to view images, but has been adapted for Windows 10/11 systems. Its user interface (UI) is more common in Linux, which facilitates the experience for those accustomed to that environment, allowing to view and manage images efficiently.</p>
+                <!-- Add an image here -->
+                <img src="https://github.com/KittyLinux2Win/KittyPhotos/raw/main/icon/kitty.app.png?raw=true" alt="KittyPhotos interface" class="mb-4 w-24 h-auto">
+            </section>
+
+            <section id="install" class="mb-12">
+                <h2 class="text-3xl font-bold text-primary-light dark:text-primary-dark mb-4">Installation</h2>
+                <p class="mb-4">To install KittyPhotos, just follow these simple steps:</p>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Make sure you have Python 3.7 or higher installed on your Windows system.</li>
+                    <li>Download the installation file from our official website or repository.</li>
+                    <li>Run the downloaded file and follow the on-screen instructions.</li>
+                    <li>Once installed, you can open KittyPhotos directly from the Windows Start menu.</li>
+                </ol>
+            </section>
+
+            <section id="Basic-usage" class="mb-12">
+                <h2 class="text-3xl font-bold text-primary-light dark:text-primary-dark mb-4">Basic Usage</h2>
+                <p class="mb-4">Once installed, you can start using KittyPhotos by following these easy steps:</p>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Open the KittyPhotos application.</li>
+                    <li>Click "Open Folder" and select the folder containing your images.</li>
+                    <li>Use the arrow keys or on-screen buttons to navigate through the images in the selected folder.</li>
+                    <li>You can zoom in or out on the images using the "Zoom In" or "Zoom Out" buttons, or by using the mouse wheel to zoom in or out.</li>
+                    <li>To rotate an image, use the "Rotate" button in the controls.</li>
+                </ol>
+                <!-- Add an image demonstrating the basic usage of KittyPhotos -->
+                <img src="https://github.com/KittyLinux2Win/KittyPhotos/blob/main/icon/KittyPhotos-Wiki-usage.png?raw=true" alt="KittyPhotos usage" class="mt-4 w-full h-auto">
+                
+                <h3 class="text-2xl font-semibold text-primary-light dark:text-primary-dark mt-6">Supported Formats</h3>
+                <p class="mb-4">KittyPhotos supports the following image formats:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>JPEG</strong> (.jpg, .jpeg)</li>
+                    <li><strong>PNG</strong> (.png)</li>
+                    <li><strong>GIF</strong> (.gif) - Includes support for animated GIFs.</li>
+                    <li><strong>BMP</strong> (.bmp)</li>
+                </ul>
+            </section>
+
+            <section id="Features" class="mb-12">
+                <h2 class="text-3xl font-bold text-primary-light dark:text-primary-dark mb-4">Features</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong class="text-primary-light dark:text-primary-dark">Image Viewing:</strong> Navigate and select images from any folder on your system.</li>
+                    <li><strong class="text-primary-light dark:text-primary-dark">Zoom:</strong> Zoom in or out on an image to view specific details.</li>
+                    <li><strong class="text-primary-light dark:text-primary-dark">Rotation:</strong> Rotate images to view them from different angles.</li>
+                    <li><strong class="text-primary-light dark:text-primary-dark">GIF Support:</strong> View animated GIF images smoothly.</li>
+                </ul>
+            </section>
+
+            <section id="faq" class="mb-12">
+                <h2 class="text-3xl font-bold text-primary-light dark:text-primary-dark mb-4">Frequently Asked Questions</h2>
+                <dl class="space-y-4">
+                    <dt class="font-semibold">Does KittyPhotos work on Mac or Linux?</dt>
+                    <dd>Currently, KittyPhotos is designed specifically for Windows systems. We are working on compatibility for other operating systems.</dd>
+                    
+                    <dt class="font-semibold">Can I use KittyPhotos to edit images?</dt>
+                    <dd>At the moment, KittyPhotos is primarily an image viewer. Editing features such as cropping or color adjustments are on our roadmap for future versions.</dd>
+
+                    <dt class="font-semibold">How can I view animated GIF images?</dt>
+                    <dd>Simply open a GIF image, and the application will automatically display the animation.</dd>
+                </dl>
+            </section>
+        </main>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            themeToggle.checked = true;
+        } else {
+            html.classList.remove('dark');
+            themeToggle.checked = false;
+        }
+
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+            } else {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+            }
+        });
+
+        const sections = document.querySelectorAll('main section');
+        const navLinks = document.querySelectorAll('aside nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-primary-light', 'dark:text-primary-dark');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-primary-light', 'dark:text-primary-dark');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
