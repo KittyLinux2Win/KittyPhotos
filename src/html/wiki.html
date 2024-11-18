@@ -38,6 +38,7 @@
         }
     </script>
     <style>
+        /* Estilos adicionales para el switch de tema */
         .theme-switch {
             position: relative;
             width: 60px;
@@ -95,6 +96,7 @@
                     <li><a href="#install" class="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Install</a></li>
                     <li><a href="#Basic-usage" class="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Basic Usage</a></li>
                     <li><a href="#Features" class="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Features</a></li>
+                    <li><a href="#Editor" class="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Image Editor</a></li>
                     <li><a href="#faq" class="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">FAQ</a></li>
                 </ul>
             </nav>
@@ -148,6 +150,32 @@
                 </ul>
             </section>
 
+            <section id="Editor" class="mb-12">
+                <h2 class="text-3xl font-bold text-primary-light dark:text-primary-dark mb-4">Image Editore</h2>
+                <p class="mb-4">A brief explanation of how the image editor works:</p>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>To open an image, click the <strong>"Open Image"</strong> button and select the image you want to edit.</li>
+                    <li>Once the image is loaded, you’ll have access to various tools to edit it as needed:</li>
+                    <ul class="pl-6 space-y-1">
+                        <li><strong>Basic Edits:</strong> Use the <strong>"Undo"</strong> and <strong>"Redo"</strong> buttons to undo or redo changes, <strong>"Grayscale"</strong> to apply a grayscale filter, <strong>"Blur"</strong> to add a blur effect, and <strong>"Rotate"</strong> to rotate the image.</li>
+                        <li><strong>Crop Tool:</strong> Use the <strong>"Start Crop"</strong> and <strong>"Apply Crop"</strong> buttons to select and apply a crop to the image.</li>
+                        <li><strong>Drawing Tools:</strong> Use <strong>"Brush"</strong> for freehand drawing, <strong>"Shapes"</strong> to add shapes, and <strong>"Color"</strong> to customize the colors of your drawings.</li>
+                    </ul>
+                    <li>When you’re done editing, save your work by clicking <strong>"Save Image"</strong>.</li>
+                </ol>
+
+                <img src="https://github.com/KittyLinux2Win/KittyPhotos/blob/main/icon/KittyPhotos-Wiki-editor.png?raw=true" alt="KittyPhotos usage" class="mt-4 w-full h-auto">
+                
+                <h3 class="text-2xl font-semibold text-primary-light dark:text-primary-dark mt-6">Supported Formats</h3>
+                <p class="mb-4">KittyPhotos Editor supports the following image formats:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>JPEG</strong> (.jpg, .jpeg)</li>
+                    <li><strong>PNG</strong> (.png)</li>
+                    <li><strong>GIF</strong> (.gif)</li>
+                    <li><strong>BMP</strong> (.bmp)</li>
+                </ul>
+            </section>
+
             <section id="Features" class="mb-12">
                 <h2 class="text-3xl font-bold text-primary-light dark:text-primary-dark mb-4">Features</h2>
                 <ul class="list-disc pl-6 space-y-2">
@@ -155,6 +183,7 @@
                     <li><strong class="text-primary-light dark:text-primary-dark">Zoom:</strong> Zoom in or out on an image to view specific details.</li>
                     <li><strong class="text-primary-light dark:text-primary-dark">Rotation:</strong> Rotate images to view them from different angles.</li>
                     <li><strong class="text-primary-light dark:text-primary-dark">GIF Support:</strong> View animated GIF images smoothly.</li>
+                    <li><strong class="text-primary-light dark:text-primary-dark">Photo Editor</strong> KittyPhotos has its own editor to edit images quickly and easily.</li>
                 </ul>
             </section>
 
@@ -163,9 +192,9 @@
                 <dl class="space-y-4">
                     <dt class="font-semibold">Does KittyPhotos work on Mac or Linux?</dt>
                     <dd>Currently, KittyPhotos is designed specifically for Windows systems.</dd>
-                    
-                    <dt class="font-semibold">Can I use KittyPhotos to edit images?</dt>
-                    <dd>At the moment, KittyPhotos is primarily an image viewer. Editing features such as cropping or color adjustments are on our roadmap for future versions.</dd>
+
+                    <dt class="font-semibold">Can I use KittyPhotos to edit images?</dt> 
+                    <dd>Yes, KittyPhotos includes basic editing features such as cropping and color adjustments. We are continually working to add more advanced tools in future updates.</dd>
 
                     <dt class="font-semibold">How can I view animated GIF images?</dt>
                     <dd>Simply open a GIF image, and the application will automatically display the animation.</dd>
