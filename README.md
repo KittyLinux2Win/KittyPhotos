@@ -43,6 +43,29 @@ KittyPhotos supports the following image formats:
 - **HEIC** (.heic)
 - **HEIF** (.heif)
 
+## Image Editor
+
+### A brief explanation of how the image editor works:
+
+1. To open an image, click the **"Open Image"** button and select the image you want to edit.
+2. Once the image is loaded, you’ll have access to various tools to edit it as needed:
+   - **Basic Edits:** Use the **"Undo"** and **"Redo"** buttons to undo or redo changes, **"Grayscale"** to apply a grayscale filter, **"Blur"** to add a blur effect, and **"Rotate"** to rotate the image.
+   - **Crop Tool:** Use the **"Start Crop"** and **"Apply Crop"** buttons to select and apply a crop to the image.
+   - **Drawing Tools:** Use **"Brush"** for freehand drawing, **"Shapes"** to add shapes, and **"Color"** to customize the colors of your drawings.
+3. When you’re done editing, save your work by clicking **"Save Image"**.
+
+![KittyPhotos usage](https://github.com/KittyLinux2Win/KittyPhotos/blob/main/icon/KittyPhotos-Wiki-editor.png?raw=true)
+
+### Supported Formats
+
+KittyPhotos Editor supports the following image formats:
+
+- **JPEG** (.jpg, .jpeg)
+- **PNG** (.png)
+- **GIF** (.gif)
+- **BMP** (.bmp)
+
+
 ## Features
 
 - **Image Viewing:** Navigate and select images from any folder on your system.
