@@ -14,6 +14,8 @@ class ImageEditor:
         icon = tk.PhotoImage(file=icon_path)
         self.root.iconphoto(True, icon)
         self.root.configure(bg="#2e3440")
+        self.unsaved_changes = True
+        self.root.protocol("WM_DELETE_WINDOW", self.on_close)
 
         self.image = None
         self.photo = None
@@ -37,6 +39,19 @@ class ImageEditor:
 
         self.setup_styles()
         self.create_widgets()
+
+    def on_close(self):
+        """Handling the window closing event."""
+        if self.unsaved_changes:
+            response = messagebox.askyesnocancel(
+                "Unsaved Changes",
+                "You have unsaved changes. Do you want to save before exiting?"
+            )
+            if response is None:
+                return
+            elif response:
+                self.save_image()
+        self.root.destroy()
 
     def setup_styles(self):
         """Set up custom styles."""
@@ -139,9 +154,13 @@ class ImageEditor:
     def save_image(self):
         """Save the current edited image."""
         if self.image:
-            save_path = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg"), ("All files", "*.*")])
+            save_path = filedialog.asksaveasfilename(
+                defaultextension=".png",
+                filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg"), ("All files", "*.*")]
+            )
             if save_path:
                 self.image.save(save_path)
+                self.unsaved_changes = False  # Cambios guardados
                 messagebox.showinfo("Save Image", "Image saved successfully.")
         else:
             messagebox.showerror("Error", "No image is loaded.")
